@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import TeamController from '../team/controller/TeamController';
+import TeamController from '../api/team/controller/TeamController';
+import MemberController from '../api/member/controller/MemberController';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -18,9 +19,13 @@ app.get('/', (req, res) => {
   });
 });
 
+// teams
 app.get('/team/all', TeamController.findAll);
-
 app.post('/team/add', TeamController.insert);
+
+// members
+app.get('/team/members', MemberController.findAll);
+app.post('/team/members/add', MemberController.insert);
 
 app.listen(port, () => {
   console.log(`Server is listening on ${port}`);

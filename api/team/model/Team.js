@@ -1,13 +1,10 @@
 import mongoose from 'mongoose';
-
+import { Member } from '../../member/model/Member';
 const Schema = mongoose.Schema;
 
 const Team = new Schema({
   teamName: { type: String },
-  members: [{
-    name: { type: String },
-    availabilityDates: { type: [String] }
-  }],
+  members: [Member]
 });
 
 const TeamModel = mongoose.model('team', Team);
