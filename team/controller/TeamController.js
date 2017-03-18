@@ -2,37 +2,37 @@ import mongoose from 'mongoose';
 import TeamModel from '../model/Team';
 
 class TeamController {
-
-static findAll(request, response) {
-  TeamModel.find({}, function (err, docs) {
-  if(err) {
-    return response.json({error: err});
+  static findAll(req, res) {
+    TeamModel.find({}, (err, docs) => {
+      if (err) {
+        return res.json({error: err});
+      }
+      return res.json(docs);
+    });
   }
-  return response.json(docs);
-});
-}
 
-static findById(request, response) {
+  static findById(req, res) {
 
-}
-static update(request, response) {
+  }
 
-}
-static insert(request, response) {
-  const newTeam = new TeamModel(request.body);
+  static insert(req, res) {
+    const newTeam = new TeamModel(req.body);
 
-  newTeam.save((err) => {
+    newTeam.save((err) => {
      if (err) {
-       return response.json({error: err});
+       return res.json({error: err});
      }
-     return response.json({success: "Success"});
-  });
+     return res.json({success: "Success"});
+    });
+  }
 
-}
-static destroy() {
+  static update(req, res) {
 
-}
+  }
 
+  static destroy() {
+
+  }
 }
 
 export default TeamController;
