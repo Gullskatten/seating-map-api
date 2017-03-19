@@ -30,6 +30,10 @@ class MemberController {
 
   }
 
+  static updateMemberWithNewDate(req, res) {
+
+  }
+
   static destroy() {
 
   }
