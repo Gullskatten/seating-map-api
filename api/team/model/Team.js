@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const Team = new Schema({
   teamName: { type: String },
+  location: { type: String},
   members: [Member]
 });
 
