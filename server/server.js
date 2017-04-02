@@ -23,14 +23,11 @@ app.get('/', (req, res) => {
 // teams
 app.get('/team/all', TeamController.findAll);
 app.post('/team/add', TeamController.insert);
+app.delete('/team/delete/:_id', TeamController.deleteTeam);
 app.put('/team/add/member/:team_id', TeamController.insertNewMember);
-app.put('/team/delete/member/:_id', TeamController.deleteMember);
+app.delete('/team/delete/member/:team_id/:_id/', TeamController.deleteMember);
 app.put('/team/update/member/', TeamController.updateMember);
 
-// members
-// app.get('/team/members/', MemberController.findAll);
-// app.post('/team/members/add', MemberController.insert);
-// app.put('/team/members/update/availability/:_id', MemberController.updateMemberWithNewDate);
 
 app.listen(port, () => {
   console.log(`Server is listening on ${port}`);
