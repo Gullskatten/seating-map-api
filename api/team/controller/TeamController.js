@@ -60,11 +60,6 @@ class TeamController {
       function (err,val) {
           res.json("Success");
       });
-    // TeamModel.update({'_id': new ObjectId(req.params.team_id) },
-    //                 {$pullAll: { 'members._id': new ObjectId(req.params._id)}},
-    //                 function (err,val) {
-    //                     res.json("Success");
-    //                 });
   }
 
   static updateMember(req, res) {
@@ -73,7 +68,8 @@ class TeamController {
     TeamModel.update({'members._id': member._id},
     {$set: {
     'members.$.availabilityDates': member.availabilityDates,
-    'members.$.name': member.name
+    'members.$.name': member.name,
+    'members.$.team_id' : member.team_id
     }}, function(err) {
       if(err) {
         res.json(err);
