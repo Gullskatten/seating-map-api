@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import TeamModel from '../model/Team';
+import { TeamModel } from '../model/Team';
 import Member from '../../member/model/Member'
 var ObjectId = require('mongoose').Types.ObjectId;
 
@@ -13,8 +13,14 @@ class TeamController {
     });
   }
 
-  static findById(req, res) {
-
+  static findAllTeamsByFloorId(req, res) {
+    TeamModel.find({}).where('floor_id').equals(req.params.floor_id).exec((err, docs) => {
+      if (err) {
+        return res.json({error: err});
+      }
+      return res.json(docs);
+    }
+  );
   }
 
   static insert(req, res) {

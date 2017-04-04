@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const Team = new Schema({
   teamName: { type: String },
-  location: { type: String},
+  floor_id: { type: String },
   members: [Member]
 });
 
 const TeamModel = mongoose.model('team', Team);
 
-export default TeamModel;
+export { TeamModel, Team };
