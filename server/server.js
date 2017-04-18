@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 app.get('/team/all', TeamController.findAll);
 app.get('/team/:floor_id', TeamController.findAllTeamsByFloorId);
 app.post('/team/add', TeamController.insert);
+app.put('/team/update/:team_id/:x/:y/', TeamController.updateTeam);
 app.delete('/team/delete/:_id', TeamController.deleteTeam);
 app.put('/team/add/member/:team_id', TeamController.insertNewMember);
 app.delete('/team/delete/member/:team_id/:_id/', TeamController.deleteMember);

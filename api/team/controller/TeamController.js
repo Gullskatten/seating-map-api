@@ -58,6 +58,22 @@ class TeamController {
                       });
   }
 
+  static updateTeam(req, res) {
+    TeamModel.findByIdAndUpdate(
+      req.params.team_id,
+      {"x": req.params.x,
+      "y": req.params.y},
+      {safe: true, upsert: true, new: true},
+      function(err, model) {
+        if(err) {
+          res.json(err);
+        } else {
+          res.json("Success");
+        }
+      }
+    );
+  }
+
 
   static deleteMember(req, res) {
     TeamModel.update(
